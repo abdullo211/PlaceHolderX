@@ -1,9 +1,10 @@
 package com.mindorks.placeholderview;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by janisharali on 27/03/16.
@@ -30,10 +31,6 @@ public class SmoothLinearLayoutManager extends LinearLayoutManager {
         mPreloadSize = 4 * mContext.getResources().getDisplayMetrics().heightPixels;
     }
 
-    @Override
-    protected int getExtraLayoutSpace(RecyclerView.State state) {
-        return mPreloadSize;
-    }
 
     public void setPreloadSize(int mPreloadSize) {
         this.mPreloadSize = mPreloadSize;

@@ -1,13 +1,11 @@
 package com.mindorks.demo;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.mindorks.butterknifelite.ButterKnifeLite;
-import com.mindorks.butterknifelite.annotations.BindView;
-import com.mindorks.butterknifelite.annotations.OnClick;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.mindorks.demo.swipe.TinderCard;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -17,27 +15,26 @@ public class ActivityTinder extends AppCompatActivity {
 
     private static final String TAG = "ActivityTinder";
 
-    @BindView(R.id.swipeView)
     private SwipePlaceHolderView mSwipView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tinder_swipe);
-        ButterKnifeLite.bind(this);
-
+        mSwipView  = findViewById(R.id.swipeView);
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        mSwipView = findViewById(R.id.swipeView);
         mSwipView.disableTouchSwipe();
         mSwipView.addItemRemoveListener(new ItemRemovedListener() {
 
             @Override
             public void onItemRemoved(int count) {
                 Log.d(TAG, "onItemRemoved: " + count);
-                if(count == 0){
+                if (count == 0) {
                     mSwipView.addView(new TinderCard())
                             .addView(new TinderCard())
                             .addView(new TinderCard())
@@ -77,7 +74,7 @@ public class ActivityTinder extends AppCompatActivity {
                 .addView(new TinderCard())
                 .addView(new TinderCard())
                 .addView(new TinderCard());
-        new Thread(new Runnable(){
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -90,25 +87,22 @@ public class ActivityTinder extends AppCompatActivity {
 //                    mSwipView.lockViews();
 //                    Thread.currentThread().sleep(4000);
 //                    mSwipView.unlockViews();
-                }catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
     }
 
-    @OnClick(R.id.rejectBtn)
-    private void onRejectClick(){
+    private void onRejectClick() {
         mSwipView.doSwipe(false);
     }
 
-    @OnClick(R.id.acceptBtn)
-    private void onAcceptClick(){
+    private void onAcceptClick() {
         mSwipView.doSwipe(true);
     }
 
-    @OnClick(R.id.undoBtn)
-    private void onUndoClick(){
+    private void onUndoClick() {
         mSwipView.undoLastSwipe();
     }
 }

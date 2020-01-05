@@ -2,12 +2,11 @@ package com.mindorks.demo;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-import com.mindorks.butterknifelite.ButterKnifeLite;
-import com.mindorks.butterknifelite.annotations.BindView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.mindorks.demo.feed.HeadingView;
 import com.mindorks.demo.feed.InfoView;
 import com.mindorks.demo.feed.data.Feed;
@@ -17,10 +16,8 @@ import com.mindorks.placeholderview.ExpandablePlaceHolderView;
 
 public class FeedTestActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
     private Toolbar mToolbar;
 
-    @BindView(R.id.expandableView)
     private ExpandablePlaceHolderView mExpandableView;
 
     private Context mContext;
@@ -29,8 +26,7 @@ public class FeedTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_test);
-        ButterKnifeLite.bind(this);
-
+        mExpandableView = findViewById(R.id.expandableView);
         mContext = this.getApplicationContext();
     }
 

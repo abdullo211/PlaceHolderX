@@ -1,6 +1,7 @@
 package com.mindorks.placeholderview.annotations;
 
-import android.support.annotation.IdRes;
+
+import androidx.annotation.IdRes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

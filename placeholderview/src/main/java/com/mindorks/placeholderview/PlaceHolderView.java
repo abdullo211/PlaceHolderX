@@ -2,8 +2,9 @@ package com.mindorks.placeholderview;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.Comparator;
